@@ -5,7 +5,7 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord)]
 #[cfg_attr(test, derive(Debug))]
-#[cfg_attr(feature = "dioxus", derive(Clone, Debug, PartialEq))]
+#[cfg_attr(feature = "dioxus", derive(Clone, Debug))]
 pub struct Id(pub u64);
 
 /// Public-facing chat struct. This is user-exportable.
