@@ -17,6 +17,12 @@ impl std::str::FromStr for Id {
         Ok(Id(s.parse()?))
     }
 }
+#[cfg(feature = "dioxus")]
+impl std::fmt::Display for Id {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "{}", self.0)
+    }
+}
 
 /// User information. This is sent from the server to the client.
 #[cfg_attr(feature = "client", derive(Deserialize))]
