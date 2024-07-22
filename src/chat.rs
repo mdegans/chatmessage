@@ -5,12 +5,14 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord)]
 #[cfg_attr(test, derive(Debug))]
+#[cfg_attr(feature = "dioxus", derive(Clone, Debug))]
 pub struct Id(pub u64);
 
 /// Public-facing chat struct. This is user-exportable.
 #[cfg_attr(feature = "client", derive(Deserialize))]
 #[cfg_attr(feature = "server", derive(Serialize))]
 #[cfg_attr(test, derive(Debug, PartialEq))]
+#[cfg_attr(feature = "dioxus", derive(Clone, Debug))]
 pub struct Chat {
     pub id: Id,
     pub title: String,
@@ -23,6 +25,7 @@ pub struct Chat {
 #[cfg_attr(feature = "client", derive(Deserialize))]
 #[cfg_attr(feature = "server", derive(Serialize))]
 #[cfg_attr(test, derive(Debug, PartialEq))]
+#[cfg_attr(feature = "dioxus", derive(Clone, Debug))]
 pub struct List {
     pub chats: BTreeMap<Id, String>,
 }
