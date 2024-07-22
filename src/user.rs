@@ -9,6 +9,15 @@ pub struct SecondFactorCode(pub [u8; 6]);
 #[cfg_attr(test, derive(Debug, PartialEq))]
 pub struct Id(pub u64);
 
+#[cfg(feature = "dioxus")]
+impl std::str::FromStr for Id {
+    type Err = <u64 as std::str::FromStr>::Err;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        Ok(Id(s.parse()?))
+    }
+}
+
 /// User information. This is sent from the server to the client.
 #[cfg_attr(feature = "client", derive(Deserialize))]
 #[cfg_attr(feature = "server", derive(Serialize))]
