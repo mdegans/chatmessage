@@ -8,10 +8,19 @@ use serde::{Deserialize, Serialize};
 #[cfg_attr(feature = "dioxus", derive(Clone, Debug))]
 pub struct Id(pub u64);
 
+#[cfg(feature = "dioxus")]
+impl std::str::FromStr for Id {
+    type Err = <u64 as std::str::FromStr>::Err;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        Ok(Id(s.parse()?))
+    }
+}
+
 /// Public-facing chat struct. This is user-exportable.
 #[cfg_attr(feature = "client", derive(Deserialize))]
 #[cfg_attr(feature = "server", derive(Serialize))]
-#[cfg_attr(test, derive(Debug, PartialEq))]
+#[cfg_attr(test, derive(PartialEq))]
 #[cfg_attr(feature = "dioxus", derive(Clone, Debug, PartialEq))]
 pub struct Chat {
     pub id: Id,
