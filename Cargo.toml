@@ -1,0 +1,13 @@
+[package]
+name = "chatmessage"
+version = "0.0.0"
+edition = "2021"
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+egui = { version = "0.27", optional = true }
+
+[features]
+egui = ["egui"]
+client = []
+server = []
