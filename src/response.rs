@@ -1,9 +1,13 @@
 use crate::{
     chat::{self, Chat},
-    message::{self, Message},
-    user, Session,
+    message::Message,
+    session::Session,
+    user,
 };
-use serde::{Deserialize, Serialize};
+#[cfg(feature = "client")]
+use serde::Deserialize;
+#[cfg(feature = "server")]
+use serde::Serialize;
 
 /// Response from the server to the client.
 #[cfg_attr(feature = "client", derive(Deserialize))]

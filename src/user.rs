@@ -1,4 +1,4 @@
-use serde::{de, Deserialize, Serialize};
+use serde::{Deserialize, Serialize};
 
 #[cfg_attr(test, derive(Debug, PartialEq))]
 #[cfg_attr(feature = "client", derive(Serialize))]
@@ -54,8 +54,6 @@ pub struct Preferences {
     /// Whether the agent has stores information about the user. Note that some
     /// safety-related information is always stored, like the user's karma and
     /// reports.
-    #[default = "true"]
     pub agent_memory: bool,
-    #[default = "true"]
     pub dark_mode: bool,
 }

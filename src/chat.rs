@@ -3,8 +3,8 @@ use std::collections::BTreeMap;
 use crate::message::Message;
 use serde::{Deserialize, Serialize};
 
-#[derive(Serialize, Deserialize)]
-#[cfg_attr(test, derive(Debug, PartialEq))]
+#[derive(Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord)]
+#[cfg_attr(test, derive(Debug))]
 pub struct Id(pub u64);
 
 /// Public-facing chat struct. This is user-exportable.

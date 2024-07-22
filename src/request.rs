@@ -1,9 +1,8 @@
-use crate::{
-    chat,
-    message::{self, Message},
-    user,
-};
-use serde::{Deserialize, Serialize};
+use crate::{chat, message::Message, user};
+#[cfg(feature = "server")]
+use serde::Deserialize;
+#[cfg(feature = "client")]
+use serde::Serialize;
 
 /// Request from client to the server.
 #[cfg_attr(feature = "client", derive(Serialize))]
@@ -24,7 +23,7 @@ pub enum Request {
     /// Delete a chat.
     DeleteChat(chat::Id),
     /// Send a message.
-    Message(chat::Id, message::Message),
+    Message(chat::Id, Message),
     /// Get the session.
     Session,
 }
