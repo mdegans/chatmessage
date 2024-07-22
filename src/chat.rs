@@ -5,7 +5,7 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord)]
 #[cfg_attr(test, derive(Debug))]
-#[cfg_attr(feature = "dioxus", derive(Clone, Debug))]
+#[cfg_attr(feature = "dioxus", derive(Clone, Copy, Debug))]
 pub struct Id(pub u64);
 
 #[cfg(feature = "dioxus")]
