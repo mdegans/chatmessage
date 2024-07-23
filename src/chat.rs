@@ -39,8 +39,8 @@ pub struct Chat {
 /// List of chats.
 #[cfg_attr(feature = "client", derive(Deserialize))]
 #[cfg_attr(feature = "server", derive(Serialize))]
-#[cfg_attr(test, derive(Debug, PartialEq))]
+#[cfg_attr(test, derive(PartialEq))]
 #[cfg_attr(feature = "dioxus", derive(Clone, Debug, PartialEq))]
 pub struct List {
-    pub chats: BTreeMap<Id, String>,
+    pub chats: BTreeMap<Id, crate::chat::Chat>,
 }
