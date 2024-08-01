@@ -6,7 +6,7 @@ use serde::{Deserialize, Serialize};
 pub struct SecondFactorCode(pub [u8; 6]);
 
 #[derive(Serialize, Deserialize)]
-#[cfg_attr(test, derive(Debug, PartialEq))]
+#[cfg_attr(test, derive(Debug, PartialEq, Eq, Hash))]
 #[cfg_attr(feature = "dioxus", derive(Clone, Copy, Debug))]
 pub struct Id(pub u64);
 
