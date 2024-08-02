@@ -3,7 +3,7 @@ use std::collections::BTreeMap;
 use crate::message::Message;
 use serde::{Deserialize, Serialize};
 
-#[derive(Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord)]
+#[derive(Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord, Hash)]
 #[cfg_attr(test, derive(Debug))]
 #[cfg_attr(feature = "dioxus", derive(Clone, Copy, Debug))]
 pub struct Id(pub u64);
