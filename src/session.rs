@@ -1,6 +1,5 @@
 use crate::{
     chat::{self, Chat},
-    message::Message,
     user,
 };
 #[cfg(feature = "client")]
@@ -14,8 +13,8 @@ use serde::Serialize;
 pub struct Session {
     pub token: String,
     pub user: user::Info,
-    pub active_chat: Option<crate::chat::Id>,
-    pub chat_list: crate::chat::List,
+    pub active_chat: Option<chat::Id>,
+    pub chat_list: chat::List,
 }
 
 impl Session {

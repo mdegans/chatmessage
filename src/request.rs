@@ -27,3 +27,21 @@ pub enum Request {
     /// Get the session.
     Session,
 }
+
+#[derive(thiserror::Error, Debug)]
+#[cfg_attr(feature = "client", derive(Serialize))]
+#[cfg_attr(feature = "server", derive(Deserialize))]
+pub enum Error {
+    #[error("missing token")]
+    MissingToken,
+    #[error("token has expired")]
+    TokenExpired,
+    #[error("invalid or inexistent IP address")]
+    InvalidIp,
+    #[error("invalid request")]
+    InvalidRequest,
+    #[error("suspicious activity detected")]
+    Sus,
+    #[error("You are banned because: {reason}.")]
+    Banned { reason: String },
+}
