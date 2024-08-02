@@ -29,8 +29,8 @@ pub enum Request {
 }
 
 #[derive(thiserror::Error, Debug)]
-#[cfg_attr(feature = "client", derive(Serialize))]
-#[cfg_attr(feature = "server", derive(Deserialize))]
+#[cfg_attr(feature = "client", derive(Deserialize))]
+#[cfg_attr(feature = "server", derive(Serialize))]
 pub enum Error {
     #[error("missing token")]
     MissingToken,
@@ -43,12 +43,15 @@ pub enum Error {
     #[error("suspicious activity detected")]
     Sus,
     #[error("banned because: {reason}")]
-    Banned { reason: Ban },
+    Banned {
+        #[from]
+        reason: Ban,
+    },
 }
 
 #[derive(thiserror::Error, Debug)]
 #[cfg_attr(feature = "client", derive(Serialize))]
-#[cfg_attr(feature = "server", derive(Deserialize))]
+#[cfg_attr(feature = "server", derive(Serialize, Deserialize))]
 pub enum Ban {
     #[error("troll")]
     Troll,
