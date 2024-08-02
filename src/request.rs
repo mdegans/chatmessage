@@ -47,7 +47,7 @@ pub enum Error {
     },
 }
 
-#[derive(thiserror::Error, Debug)]
+#[derive(thiserror::Error, Debug, Clone)]
 #[cfg_attr(any(feature = "client", feature = "server"), derive(Deserialize))]
 #[cfg_attr(feature = "server", derive(Serialize))]
 pub enum Ban {
