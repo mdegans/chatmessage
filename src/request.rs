@@ -42,6 +42,18 @@ pub enum Error {
     InvalidRequest,
     #[error("suspicious activity detected")]
     Sus,
-    #[error("You are banned because: {reason}.")]
-    Banned { reason: String },
+    #[error("banned because: {reason}")]
+    Banned { reason: Ban },
+}
+
+#[derive(thiserror::Error, Debug)]
+#[cfg_attr(feature = "client", derive(Serialize))]
+#[cfg_attr(feature = "server", derive(Deserialize))]
+pub enum Ban {
+    #[error("troll")]
+    Troll,
+    #[error("spam")]
+    Spam,
+    #[error("{reason}")]
+    Other { reason: String },
 }
