@@ -8,7 +8,7 @@ use serde::Deserialize;
 use serde::Serialize;
 
 #[cfg_attr(feature = "client", derive(Deserialize))]
-#[cfg_attr(feature = "server", derive(Serialize))]
+#[cfg_attr(feature = "server", derive(Serialize, Deserialize))]
 #[cfg_attr(test, derive(PartialEq))]
 pub struct Session {
     pub token: String,
