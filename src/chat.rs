@@ -24,7 +24,7 @@ impl std::fmt::Display for Id {
 }
 
 /// Public-facing chat struct. This is user-exportable.
-#[cfg_attr(feature = "client", derive(Deserialize))]
+#[cfg_attr(any(feature = "client", feature = "server"), derive(Deserialize))]
 #[cfg_attr(feature = "server", derive(Serialize))]
 #[cfg_attr(test, derive(PartialEq))]
 #[cfg_attr(feature = "dioxus", derive(Clone, Debug, PartialEq))]
@@ -37,7 +37,7 @@ pub struct Chat {
 }
 
 /// List of chats.
-#[cfg_attr(feature = "client", derive(Deserialize))]
+#[cfg_attr(any(feature = "client", feature = "server"), derive(Deserialize))]
 #[cfg_attr(feature = "server", derive(Serialize))]
 #[cfg_attr(test, derive(PartialEq))]
 #[cfg_attr(feature = "dioxus", derive(Clone, Debug, PartialEq))]

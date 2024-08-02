@@ -1,8 +1,6 @@
 use crate::{chat, message::Message, user};
-#[cfg(feature = "server")]
-use serde::Deserialize;
-#[cfg(feature = "client")]
-use serde::Serialize;
+#[cfg(any(feature = "server", feature = "client"))]
+use serde::{Deserialize, Serialize};
 
 /// Request from client to the server.
 #[cfg_attr(feature = "client", derive(Serialize))]
@@ -50,8 +48,8 @@ pub enum Error {
 }
 
 #[derive(thiserror::Error, Debug)]
-#[cfg_attr(feature = "client", derive(Serialize))]
-#[cfg_attr(feature = "server", derive(Serialize, Deserialize))]
+#[cfg_attr(any(feature = "client", feature = "server"), derive(Deserialize))]
+#[cfg_attr(feature = "server", derive(Serialize))]
 pub enum Ban {
     #[error("troll")]
     Troll,

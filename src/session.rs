@@ -2,13 +2,12 @@ use crate::{
     chat::{self, Chat},
     user,
 };
-#[cfg(feature = "client")]
-use serde::Deserialize;
-#[cfg(feature = "server")]
-use serde::Serialize;
+#[cfg(any(feature = "server", feature = "client"))]
+#[allow(unused_imports)]
+use serde::{Deserialize, Serialize};
 
-#[cfg_attr(feature = "client", derive(Deserialize))]
-#[cfg_attr(feature = "server", derive(Serialize, Deserialize))]
+#[cfg_attr(any(feature = "client", feature = "server"), derive(Deserialize))]
+#[cfg_attr(feature = "server", derive(Serialize))]
 #[cfg_attr(test, derive(PartialEq))]
 pub struct Session {
     pub token: String,

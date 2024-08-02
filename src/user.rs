@@ -26,7 +26,7 @@ impl std::fmt::Display for Id {
 }
 
 /// User information. This is sent from the server to the client.
-#[cfg_attr(feature = "client", derive(Deserialize))]
+#[cfg_attr(any(feature = "client", feature = "server"), derive(Deserialize))]
 #[cfg_attr(feature = "server", derive(Serialize))]
 #[cfg_attr(test, derive(Debug, PartialEq))]
 pub struct Info {
