@@ -4,7 +4,7 @@ use serde::{Deserialize, Serialize};
 
 /// Request from client to the server.
 #[cfg_attr(feature = "client", derive(Serialize))]
-#[cfg_attr(feature = "server", derive(Deserialize))]
+#[cfg_attr(feature = "server", derive(Deserialize, Clone))]
 pub enum Request {
     /// Register a new user.
     Register(user::Registration),

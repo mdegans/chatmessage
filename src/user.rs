@@ -37,6 +37,7 @@ pub struct Info {
     pub preferences: Preferences,
 }
 
+#[derive(Clone)]
 #[cfg_attr(test, derive(Debug, PartialEq))]
 #[cfg_attr(feature = "client", derive(Serialize))]
 #[cfg_attr(feature = "server", derive(Deserialize))]
@@ -51,6 +52,7 @@ pub struct Registration {
     // pub second_factor_code: SecondFactorCode,
 }
 
+#[derive(Clone)]
 #[cfg_attr(feature = "client", derive(Serialize))]
 #[cfg_attr(feature = "server", derive(Deserialize))]
 #[cfg_attr(test, derive(Debug, PartialEq))]
@@ -64,7 +66,7 @@ pub struct Login {
     pub reset: bool,
 }
 
-#[derive(Serialize, Deserialize, Default)]
+#[derive(Clone, Serialize, Deserialize, Default)]
 #[cfg_attr(test, derive(Debug, PartialEq))]
 pub struct Preferences {
     /// Whether the agent has stores information about the user. Note that some
