@@ -38,6 +38,10 @@ pub enum Error {
     InvalidIp,
     #[error("invalid request")]
     InvalidRequest,
+    #[error("user not found")]
+    UserNotFound,
+    #[error("wrong password")]
+    WrongPassword,
     #[error("suspicious activity detected")]
     Sus,
     #[error("banned because: {reason}")]
