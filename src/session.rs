@@ -11,7 +11,7 @@ use serde::{Deserialize, Serialize};
 #[cfg_attr(test, derive(PartialEq))]
 pub struct Session {
     pub token: String,
-    pub user: user::Info,
+    pub user: user::User,
     pub active_chat: Option<chat::Id>,
     pub chat_list: chat::List,
 }

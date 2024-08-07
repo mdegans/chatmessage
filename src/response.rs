@@ -22,7 +22,7 @@ pub enum Response {
     /// [`Request::Info`](crate::request::Request::Info),
     /// [`Request::Login`](crate::request::Request::Login), and
     /// [`Request::Register`](crate::request::Request::Register).
-    Info(user::Info),
+    Info(user::User),
     /// User preferences response.
     Preferences(user::Preferences),
     /// [`chat::List`] response. Sent in response to

@@ -29,7 +29,7 @@ impl std::fmt::Display for Id {
 #[cfg_attr(any(feature = "client", feature = "server"), derive(Deserialize))]
 #[cfg_attr(feature = "server", derive(Serialize))]
 #[cfg_attr(test, derive(Debug, PartialEq))]
-pub struct Info {
+pub struct User {
     pub id: Id,
     pub username: String,
     pub email: String,
