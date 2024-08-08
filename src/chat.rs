@@ -36,7 +36,7 @@ pub struct Chat {
 
 /// List of chats.
 #[cfg_attr(any(feature = "client", feature = "server"), derive(Deserialize))]
-#[cfg_attr(feature = "server", derive(Serialize))]
+#[cfg_attr(feature = "server", derive(Serialize, Default))]
 #[cfg_attr(test, derive(PartialEq))]
 #[cfg_attr(feature = "dioxus", derive(Clone, Debug, PartialEq))]
 pub struct List {
