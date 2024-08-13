@@ -6,10 +6,6 @@ use serde::{Deserialize, Serialize};
 #[cfg_attr(feature = "client", derive(Serialize))]
 #[cfg_attr(feature = "server", derive(Deserialize))]
 pub enum Request {
-    /// Register a new user.
-    Register(user::Registration),
-    /// Log in.
-    Login(user::Login),
     /// Log out.
     Logout,
     /// Update user preferences.
