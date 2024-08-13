@@ -20,6 +20,8 @@ pub enum Response {
     Logout,
     /// Preferences updated.
     Preferences(user::Preferences),
+    /// Chat deleted.
+    ChatDeleted(chat::Id),
     /// Message response.
     Message(chat::Id, Message),
     /// Session response. Sent in response to:
