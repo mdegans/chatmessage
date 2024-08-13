@@ -38,6 +38,8 @@ pub enum Error {
     UserNotFound,
     #[error("wrong password")]
     WrongPassword,
+    #[error("Unregistered user")]
+    Unregistered,
     #[error("suspicious activity detected")]
     Sus,
     #[error("banned because: {reason}")]
