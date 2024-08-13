@@ -42,8 +42,10 @@ pub enum Error {
     EmailTaken,
     #[error("wrong password")]
     WrongPassword,
-    #[error("Unregistered user")]
+    #[error("unregistered user")]
     Unregistered,
+    #[error("unauthorized")]
+    Unauthorized,
     #[error("suspicious activity detected")]
     Sus,
     #[error("banned because: {reason}")]
