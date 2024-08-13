@@ -44,8 +44,8 @@ pub enum Error {
     Unregistered,
     #[error("unauthorized")]
     Unauthorized,
-    #[error("suspicious activity detected")]
-    Sus,
+    #[error("suspicious activity detected: {detail}")]
+    Sus { detail: String },
     #[error("banned because: {reason}")]
     Banned {
         #[from]
