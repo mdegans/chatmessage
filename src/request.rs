@@ -28,8 +28,8 @@ pub enum Error {
     TokenExpired,
     #[error("invalid or inexistent IP address")]
     InvalidIp,
-    #[error("invalid request")]
-    InvalidRequest,
+    #[error("invalid request: {detail}")]
+    InvalidRequest { detail: String },
     #[error("user not found")]
     UserNotFound,
     #[error("username is already taken")]
