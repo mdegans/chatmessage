@@ -38,6 +38,8 @@ pub enum Error {
     UserNotFound,
     #[error("username is already taken")]
     UsernameTaken,
+    #[error("backend error - try again later")]
+    Backend,
     #[error("email is already in use")]
     EmailTaken,
     #[error("wrong password")]
