@@ -2,6 +2,7 @@ use crate::{
     chat::{self},
     message::Message,
     session::Session,
+    user,
 };
 #[cfg(feature = "client")]
 use serde::Deserialize;
@@ -17,6 +18,8 @@ pub enum Response {
     Connected,
     /// Logout response.
     Logout,
+    /// Preferences updated.
+    Preferences(user::Preferences),
     /// Message response.
     Message(chat::Id, Message),
     /// Session response. Sent in response to:
