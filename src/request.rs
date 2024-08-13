@@ -4,7 +4,7 @@ use serde::{Deserialize, Serialize};
 
 /// Request from client to the server.
 #[cfg_attr(feature = "client", derive(Serialize))]
-#[cfg_attr(feature = "server", derive(Deserialize, Clone))]
+#[cfg_attr(feature = "server", derive(Deserialize))]
 pub enum Request {
     /// Register a new user.
     Register(user::Registration),
@@ -14,10 +14,6 @@ pub enum Request {
     Logout,
     /// Update user preferences.
     UpdatePreferences(user::Preferences),
-    /// Get a list of chats.
-    ChatList,
-    /// Get a chat.
-    GetChat(chat::Id),
     /// Delete a chat.
     DeleteChat(chat::Id),
     /// Send a message.

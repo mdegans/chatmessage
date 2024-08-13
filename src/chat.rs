@@ -22,10 +22,11 @@ impl std::fmt::Display for Id {
 }
 
 /// Public-facing chat struct. This is user-exportable.
+#[derive(Clone)]
 #[cfg_attr(any(feature = "client", feature = "server"), derive(Deserialize))]
 #[cfg_attr(feature = "server", derive(Serialize))]
 #[cfg_attr(test, derive(PartialEq))]
-#[cfg_attr(feature = "dioxus", derive(Clone, Debug, PartialEq))]
+#[cfg_attr(feature = "dioxus", derive(Debug, PartialEq))]
 pub struct Chat {
     pub id: Id,
     pub title: String,
@@ -35,10 +36,11 @@ pub struct Chat {
 }
 
 /// List of chats.
+#[derive(Clone)]
 #[cfg_attr(any(feature = "client", feature = "server"), derive(Deserialize))]
 #[cfg_attr(feature = "server", derive(Serialize, Default))]
 #[cfg_attr(test, derive(PartialEq))]
-#[cfg_attr(feature = "dioxus", derive(Clone, Debug, PartialEq))]
+#[cfg_attr(feature = "dioxus", derive(Debug, PartialEq))]
 pub struct List {
     pub chats: BTreeMap<Id, crate::chat::Chat>,
 }

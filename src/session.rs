@@ -2,10 +2,12 @@ use crate::{
     chat::{self, Chat},
     user,
 };
+use serde::de;
 #[cfg(any(feature = "server", feature = "client"))]
 #[allow(unused_imports)]
 use serde::{Deserialize, Serialize};
 
+#[derive(Clone)]
 #[cfg_attr(any(feature = "client", feature = "server"), derive(Deserialize))]
 #[cfg_attr(feature = "server", derive(Serialize))]
 #[cfg_attr(test, derive(PartialEq))]
