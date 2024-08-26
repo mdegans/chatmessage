@@ -1,14 +1,17 @@
 [package]
 name = "chatmessage"
-version = "0.0.36"
+version = "0.0.37"
 edition = "2021"
 
 [dependencies]
 serde = { version = "1.0", features = ["derive"] }
 egui = { version = "0.27", optional = true }
+misanthropic = { version = "0.1", optional = true }
 thiserror = "1"
 
 [features]
+default = []
+misanthropic = ["dep:misanthropic"]
 egui = ["dep:egui"]
 client = []
 server = []
