@@ -28,7 +28,6 @@ impl std::fmt::Display for Id {
 #[cfg_attr(test, derive(PartialEq))]
 #[cfg_attr(feature = "dioxus", derive(Debug, PartialEq))]
 pub struct Chat {
-    pub id: Id,
     pub title: String,
     pub messages: Vec<Message>,
     /// Temporarily disable agent memory (except safety-related information).
