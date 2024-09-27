@@ -18,12 +18,12 @@ pub struct Message {
 }
 
 #[cfg(feature = "misanthropic")]
-impl From<misanthropic::request::Message> for Message {
-    fn from(msg: misanthropic::request::Message) -> Self {
+impl<'a> From<misanthropic::prompt::Message<'a>> for Message {
+    fn from(msg: misanthropic::prompt::Message) -> Self {
         Self {
             role: match msg.role {
-                misanthropic::request::message::Role::User => Role::User,
-                misanthropic::request::message::Role::Assistant => Role::Agent,
+                misanthropic::prompt::message::Role::User => Role::User,
+                misanthropic::prompt::message::Role::Assistant => Role::Agent,
             },
             content: msg.content.to_string(),
         }
@@ -31,14 +31,14 @@ impl From<misanthropic::request::Message> for Message {
 }
 
 #[cfg(feature = "misanthropic")]
-impl Into<misanthropic::request::Message> for Message {
-    fn into(self) -> misanthropic::request::Message {
-        misanthropic::request::Message {
+impl<'a> Into<misanthropic::prompt::Message<'a>> for Message {
+    fn into(self) -> misanthropic::prompt::Message<'a> {
+        misanthropic::prompt::Message {
             role: match self.role {
-                Role::User => misanthropic::request::message::Role::User,
-                Role::Agent => misanthropic::request::message::Role::Assistant,
+                Role::User => misanthropic::prompt::message::Role::User,
+                Role::Agent => misanthropic::prompt::message::Role::Assistant,
             },
-            content: misanthropic::request::message::Content::SinglePart(self.content),
+            content: misanthropic::prompt::message::Content::SinglePart(self.content.into()),
         }
     }
 }
