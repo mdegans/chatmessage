@@ -5,7 +5,7 @@ use serde::{Deserialize, Serialize};
 /// Request from client to the server.
 #[cfg_attr(feature = "client", derive(Serialize))]
 #[cfg_attr(feature = "server", derive(Deserialize))]
-pub enum Request {
+pub enum Request<'a> {
     /// Log out.
     Logout,
     /// Update user preferences.
@@ -13,7 +13,7 @@ pub enum Request {
     /// Delete a chat.
     DeleteChat(chat::Id),
     /// Send a message.
-    Message(chat::Id, Message),
+    Message(chat::Id, Message<'a>),
     /// Get the session.
     Session,
 }
