@@ -34,7 +34,7 @@ where
 /// List of chats.
 #[derive(Clone)]
 #[cfg_attr(any(feature = "client", feature = "server"), derive(Deserialize))]
-#[cfg_attr(feature = "server", derive(Serialize, Default))]
+#[cfg_attr(feature = "server", derive(Serialize, Default, Debug))]
 #[cfg_attr(test, derive(PartialEq))]
 pub struct List<'a> {
     pub chats: BTreeMap<Id, Cow<'a, str>>,

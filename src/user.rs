@@ -5,8 +5,7 @@ use serde::{Deserialize, Serialize};
 #[cfg_attr(feature = "server", derive(Deserialize))]
 pub struct SecondFactorCode(pub [u8; 6]);
 
-#[derive(Clone, Copy, Serialize, Deserialize, PartialEq, Eq, Hash)]
-#[cfg_attr(test, derive(Debug))]
+#[derive(Clone, Copy, Debug, Serialize, Deserialize, PartialEq, Eq, Hash)]
 #[cfg_attr(feature = "dioxus", derive(Debug))]
 pub struct Id(pub u64);
 
@@ -28,8 +27,8 @@ impl std::fmt::Display for Id {
 /// User information. This is sent from the server to the client.
 #[derive(Clone)]
 #[cfg_attr(any(feature = "client", feature = "server"), derive(Deserialize))]
-#[cfg_attr(feature = "server", derive(Serialize))]
-#[cfg_attr(test, derive(Debug, PartialEq))]
+#[cfg_attr(feature = "server", derive(Debug, Serialize))]
+#[cfg_attr(test, derive(PartialEq))]
 pub struct User {
     pub id: Id,
     pub username: String,
@@ -67,8 +66,8 @@ pub struct Login {
     pub reset: bool,
 }
 
-#[derive(Clone, Serialize, Deserialize, Default)]
-#[cfg_attr(test, derive(Debug, PartialEq))]
+#[derive(Debug, Clone, Serialize, Deserialize, Default)]
+#[cfg_attr(test, derive(PartialEq))]
 pub struct Preferences {
     /// Whether the agent has stores information about the user. Note that some
     /// safety-related information is always stored, like the user's karma and
