@@ -1,3 +1,5 @@
+use std::borrow::Cow;
+
 use crate::{
     chat::{self},
     message::Message,
@@ -18,6 +20,8 @@ pub enum Response<'a> {
     Connected,
     /// Logout response.
     Logout,
+    /// Narration is a small blurb underneath a message to indicate actions.
+    Narration(chat::Id, Cow<'a, str>),
     /// Preferences updated.
     Preferences(user::Preferences),
     /// Chat deleted.
