@@ -32,4 +32,6 @@ pub enum Response<'a> {
     /// [`Request::Login`](crate::request::Request::Login), and
     /// [`Request::Register`](crate::request::Request::Register).
     Session(Session<'a>),
+    /// Server maintenance. Client should try reconnecting. Update is quick.
+    Maintenance,
 }
