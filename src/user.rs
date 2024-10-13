@@ -8,7 +8,7 @@ pub struct SecondFactorCode(pub [u8; 6]);
 #[derive(Clone, Copy, Debug, Serialize, Deserialize, PartialEq, Eq, Hash)]
 #[cfg_attr(feature = "dioxus", derive(Debug))]
 #[serde(transparent)]
-pub struct Id(crate::id::Id);
+pub struct Id(pub crate::id::Id);
 
 #[cfg(feature = "dioxus")]
 impl std::str::FromStr for Id {

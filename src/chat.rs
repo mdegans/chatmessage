@@ -5,7 +5,7 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Copy, Debug, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord, Hash)]
 #[serde(transparent)]
-pub struct Id(crate::id::Id);
+pub struct Id(pub crate::id::Id);
 
 /// Public-facing chat struct. This is user-exportable.
 #[derive(Clone)]
