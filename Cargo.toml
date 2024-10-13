@@ -1,6 +1,6 @@
 [package]
 name = "chatmessage"
-version = "0.0.38"
+version = "0.0.39"
 edition = "2021"
 
 [dependencies]
@@ -8,6 +8,7 @@ serde = { version = "1.0", features = ["derive"] }
 egui = { version = "0.27", optional = true }
 misanthropic = { version = "0.3", optional = true }
 thiserror = "1"
+uuid = { version = "1", features = ["v4", "fast-rng"] }
 
 [features]
 default = []

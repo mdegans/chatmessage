@@ -4,7 +4,9 @@ use crate::message::Message;
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Copy, Debug, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord, Hash)]
-pub struct Id(pub (u64, u64));
+#[serde(transparent)]
+pub struct Id(crate::id::Id);
+
 /// Public-facing chat struct. This is user-exportable.
 #[derive(Clone)]
 #[cfg_attr(any(feature = "client", feature = "server"), derive(Deserialize))]
