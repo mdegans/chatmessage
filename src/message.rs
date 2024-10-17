@@ -31,7 +31,9 @@ where
                 misanthropic::prompt::message::Role::Assistant => Role::Agent,
             },
             content: match &msg.content {
-                misanthropic::prompt::message::Content::SinglePart(content) => content.clone(),
+                misanthropic::prompt::message::Content::SinglePart(content) => {
+                    content.to_string().into()
+                }
                 misanthropic::prompt::message::Content::MultiPart(_) => {
                     Cow::Owned(msg.content.to_string())
                 }
@@ -51,7 +53,9 @@ where
                 Role::User => misanthropic::prompt::message::Role::User,
                 Role::Agent => misanthropic::prompt::message::Role::Assistant,
             },
-            content: misanthropic::prompt::message::Content::SinglePart(self.content.clone()),
+            content: misanthropic::prompt::message::Content::SinglePart(
+                self.content.clone().into(),
+            ),
         }
     }
 }
