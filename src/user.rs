@@ -6,19 +6,9 @@ use serde::{Deserialize, Serialize};
 pub struct SecondFactorCode(pub [u8; 6]);
 
 #[derive(Clone, Copy, Debug, Serialize, Deserialize, PartialEq, Eq, Hash)]
-#[cfg_attr(feature = "dioxus", derive(Debug))]
 #[serde(transparent)]
 pub struct Id(pub crate::id::Id);
 
-#[cfg(feature = "dioxus")]
-impl std::str::FromStr for Id {
-    type Err = <u64 as std::str::FromStr>::Err;
-
-    fn from_str(s: &str) -> Result<Self, Self::Err> {
-        Ok(Id(s.parse()?))
-    }
-}
-#[cfg(feature = "dioxus")]
 impl std::fmt::Display for Id {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         write!(f, "{}", self.0)
